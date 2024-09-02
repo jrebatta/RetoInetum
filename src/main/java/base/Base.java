@@ -1,6 +1,6 @@
 package base;
 
-import hook.DriverManager;
+import utils.DriverManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public class Base {
     protected WebDriver driver;
 
     public Base() {
-        driver = DriverManager.getDriver(); // Usa la instancia de DriverManager
+        driver = DriverManager.getDriver();
     }
 
     public WebElement findElement(By locator) {
@@ -65,5 +65,16 @@ public class Base {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+
+    public void waitForElementAndThenFixedTime(By locator, int waitTime, int fixedTime) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTime));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        try {
+            Thread.sleep(fixedTime * 1000); // fixedTime está en segundos
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

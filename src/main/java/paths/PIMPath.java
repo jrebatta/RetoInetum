@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public class PIMPath {
     public By aPIM = By.cssSelector("a.oxd-main-menu-item[href='/web/index.php/pim/viewPimModule']");
-    public By aAddEmployee = By.cssSelector("a.oxd-topbar-body-nav-tab-item[href='#']:contains('Add Employee')");
+    public By aAddEmployee = By.cssSelector("ul > li:nth-child(3) > a.oxd-topbar-body-nav-tab-item");
     public By inputFirstName = By.cssSelector("input[name='firstName']");
     public By inputMiddleName = By.cssSelector("input[name='middleName']");
     public By inputLastName = By.cssSelector("input[name='lastName']");
