@@ -1,28 +1,21 @@
 package base;
 
-import io.cucumber.datatable.DataTable;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Alert;
+import hook.DriverManager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
-import java.util.Map;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class Base {
 
-    public WebDriver driver;
-    public Alert alert;
+    protected WebDriver driver;
 
     public Base() {
-    }
-
-    public void chromeDriverConnection() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = DriverManager.getDriver(); // Usa la instancia de DriverManager
     }
 
     public WebElement findElement(By locator) {
@@ -63,23 +56,14 @@ public class Base {
         selectList.selectByVisibleText(text);
     }
 
-    public static String getValueFromDataTable(DataTable dataTable, String title) {
-        List<Map<String, String>> list = dataTable.asMaps();
-        return list.get(0).get(title);
+    public void waitForElement(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public void implicitWait(int number) throws InterruptedException {
-        Thread.sleep(number);
-    }
-
-    public void alertAccept() {
-        alert = driver.switchTo().alert();
-        alert.accept();
-    }
-
-    public String alertGetText() {
-        alert = driver.switchTo().alert();
-        return alert.getText();
+    public void waitForElementToBeClickable(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
 
