@@ -17,12 +17,12 @@ public class LoginSteps {
     }
 
     @Given("el usuario ingresa {string} y {string} y hace clic en el botón de login")
-    public void elUsuarioIngresaYYHaceClicEnElBotónDeLogin(String usuario, String contraseña) throws InterruptedException {
+    public void elUsuarioIngresaYYHaceClicEnElBotónDeLogin(String usuario, String contraseña){
         loginPage.elUsuarioIngresaYYHaceClicEnElBotónDeLogin(usuario,contraseña);
     }
 
     @Then("el usuario debería ver el mensaje del Dashboard {string}")
-    public void elUsuarioDeberíaVerElDelDashboard(String mensaje_exito) throws InterruptedException  {
+    public void elUsuarioDeberíaVerElDelDashboard(String mensaje_exito){
         loginPage.elUsuarioDeberíaVerElMensajeDeÉxito(mensaje_exito);
     }
 

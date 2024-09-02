@@ -1,5 +1,5 @@
 #language: en
-@Login
+@Tests
 Feature: Inicio de sesión
 
   Background:
@@ -18,5 +18,5 @@ Feature: Inicio de sesión
     When el usuario crea un nuevo empleado con los datos:
       | First Name  | Middle Name | Last Name | Employee ID |
       | Juan        | Pedro       | Perez     |             |
-    Then el usuario debería ver el mensaje de confirmación "Successfully Saved"
-    And el usuario debería ver el nombre del empleado "<First Name>" y "<Last Name>"
+    And el usuario debería ver el mensaje de confirmación "Successfully Saved"
+    Then el usuario debería ver el nombre del empleado "Juan" y "Perez"

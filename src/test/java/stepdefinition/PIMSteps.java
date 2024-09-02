@@ -28,12 +28,12 @@ public class PIMSteps {
         pimPage.elUsuarioCreaUnNuevoEmpleadoConLosDatos(firstName, middleName, lastName, employeeId);
     }
 
-    @Then("el usuario debería ver el mensaje de confirmación {string}")
+    @And("el usuario debería ver el mensaje de confirmación {string}")
     public void elUsuarioDeberíaVerElMensajeDeConfirmación(String mensaje) {
         pimPage.elUsuarioDeberíaVerElMensajeDeConfirmación(mensaje);
     }
 
-    @And("el usuario debería ver el nombre del empleado {string} y {string}")
+    @Then("el usuario debería ver el nombre del empleado {string} y {string}")
     public void elUsuarioDeberíaVerElNombreDelEmpleadoY(String nombre, String apellido) {
         pimPage.elUsuarioDeberíaVerElNombreDelEmpleadoY(nombre,apellido);
     }
