@@ -1,10 +1,10 @@
 name: Maven Tests
 
-on: 
-  push: 
+on:
+  push:
     branches:
       - main
-  pull_request: 
+  pull_request:
     branches:
       - main
 
@@ -13,24 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
 
-    - name: Set up JDK 21
-      uses: actions/setup-java@v3
-      with:
-        java-version: '21'
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'  # Especifica la distribución de JDK
 
-    - name: Cache Maven dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-m2
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
 
-    - name: Install dependencies
-      run: mvn install -DskipTests
+      - name: Install dependencies
+        run: mvn install -DskipTests
 
-    - name: Run tests
-      run: mvn clean test -Dcucumber.options="--tags @Tests"
+      - name: Run tests
+        run: mvn clean test -Dcucumber.options="--tags @Tests"
