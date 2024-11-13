@@ -70,7 +70,7 @@ public class Base {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTime));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         try {
-            Thread.sleep(fixedTime * 1000); // fixedTime está en segundos
+            Thread.sleep(fixedTime * 1000L); // fixedTime está en segundos
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
