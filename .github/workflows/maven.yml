@@ -6,7 +6,7 @@ on:
       tag: # Input para el tag
         description: 'Tag to execute' # Descripción del input
         required: true # El input es obligatorio
-        default: '@Tests' # Valor por defecto del tag
+        default: 'Tests' # Valor por defecto del tag
 
 jobs:
   test:
@@ -34,4 +34,4 @@ jobs:
         run: mvn install -DskipTests
 
       - name: Run tests
-        run: mvn clean test -Dcucumber.options="--tags ${{ github.event.inputs.tag }}"
+        run: mvn clean test -Dcucumber.options="--tags @${{ github.event.inputs.tag }}"
